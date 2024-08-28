@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/12-08-task-ts-no3/static/js/main.0070df3b.js",
-    "index.html": "/12-08-task-ts-no3/index.html",
-    "main.0070df3b.js.map": "/12-08-task-ts-no3/static/js/main.0070df3b.js.map"
+    "main.js": "/28-08-task-04/static/js/main.8b053271.js",
+    "index.html": "/28-08-task-04/index.html",
+    "main.8b053271.js.map": "/28-08-task-04/static/js/main.8b053271.js.map"
   },
   "entrypoints": [
-    "static/js/main.0070df3b.js"
+    "static/js/main.8b053271.js"
   ]
 }
