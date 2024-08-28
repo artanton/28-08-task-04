@@ -11,7 +11,7 @@ import { BrowserRouter } from 'react-router-dom';
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <Provider store={store}>
-      <BrowserRouter basename="/12-08-task-ts-no3">
+      <BrowserRouter basename="/28-08-task-04">
         <ThemeProvider theme={theme}>
           <App />
         </ThemeProvider>
