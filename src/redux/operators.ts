@@ -3,9 +3,10 @@ import axios from 'axios';
 import { ITask } from '../Pages/mainPage/Task.types';
 
 // axios.defaults.baseURL = 'https://668c2ba00b61b8d23b0ca4de.mockapi.io';
-// axios.defaults.baseURL = 'https://recursive-todo-api.onrender.com/api'; //node
-axios.defaults.baseURL = 'https://recusive-todolist-nest-mongo.onrender.com'; //nest-mongose
-// axios.defaults.baseURL = 'http://localhost:3000/tasks';
+// axios.defaults.baseURL = 'https://recursive-todo-api.onrender.com/api'; //node-mongoDB
+// axios.defaults.baseURL = 'https://recusive-todolist-nest-mongo.onrender.com'; //nest-mongose-mongoDB
+
+axios.defaults.baseURL = 'https://recurcieve-todolist-nest-typeorm-api.onrender.com'; //nest-typeORM-mongoDB
 
 export const fetchTasks = createAsyncThunk<ITask[]>(
   'tasks/fetchAll',
