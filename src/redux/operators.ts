@@ -6,7 +6,9 @@ import { ITask } from '../Pages/mainPage/Task.types';
 // axios.defaults.baseURL = 'https://recursive-todo-api.onrender.com/api'; //node-mongoDB
 // axios.defaults.baseURL = 'https://recusive-todolist-nest-mongo.onrender.com'; //nest-mongose-mongoDB
 
-axios.defaults.baseURL = 'https://recurcieve-todolist-nest-typeorm-api.onrender.com'; //nest-typeORM-mongoDB
+
+// axios.defaults.baseURL = 'https://recurcieve-todolist-nest-typeorm-api.onrender.com'; //nest-typeORM-mongoDB
+axios.defaults.baseURL = 'https://recurcieve-todo-nest-prisma-mongo.onrender.com'; //nest-prisma-mongoDB
 
 export const fetchTasks = createAsyncThunk<ITask[]>(
   'tasks/fetchAll',
@@ -30,6 +32,12 @@ export const addTask = createAsyncThunk<
   Partial<ITask>,
   { rejectValue: string }
 >('tasks/addTask', async ({ text, date, parentId, subLevel }, thunkAPI) => {
+  console.log(
+    "text", typeof(text), text,
+    "date", typeof(date), date, 
+    "parentId", typeof(parentId), parentId,
+    "subLevel", typeof(subLevel), subLevel
+  );
   try {
     const response = await axios.post('/tasks', {
       text,
