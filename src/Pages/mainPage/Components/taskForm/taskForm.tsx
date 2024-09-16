@@ -8,8 +8,8 @@ import {
   FormStyled,
 } from './taskFormStyled';
 import { useDispatch } from 'react-redux';
-import { addTask } from '../../../../redux/operators';
-import { ITask } from '../../Task.types';
+import { addTask } from '../../../../redux/tasks/operators';
+import { ITask } from '../../../../helper/Task.types';
 import { FC } from 'react';
 import { AppDispatch } from '../../../../redux/store';
 // import Notiflix from 'notiflix';

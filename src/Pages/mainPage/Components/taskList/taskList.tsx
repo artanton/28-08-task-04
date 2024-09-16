@@ -1,9 +1,9 @@
 import { useSelector } from 'react-redux';
 import { TaskItem } from '../taskItem/taskItem';
 import { TasksList } from './taskListStyled';
-import { selectTask } from '../../../../redux/selectors';
+import { selectTask } from '../../../../redux/tasks/selectors';
 import { getColorForLevel, groupTasksByParentId, rootEl } from '../../../../helper/helper';
-import { ITask } from '../../Task.types';
+import { ITask } from '../../../../helper/Task.types';
 import { FC } from 'react';
 
 // Рекурсивная функция для отображения задач и их подзадач

@@ -6,16 +6,17 @@ import {
   selectTask,
   selectError,
   selectIsLoading,
-} from '../../redux/selectors';
+} from '../../redux/tasks/selectors';
 import { FC, useEffect } from 'react';
-import { fetchTasks } from '../../redux/operators';
+import { fetchTasks } from '../../redux/tasks/operators';
 import { MagnifyingGlass } from 'react-loader-spinner';
 
 import TemporaryDrawer from './Components/swipeableEdgeDrawer/SwipeableEdgeDrawer';
 import { Container, DrawlerBtn, Loader } from './TaskPageStyled';
 import { AppDispatch } from '../../redux/store';
+import { Helmet } from 'react-helmet-async';
 
-export const Home: FC = () => {
+ const Tasks: FC = () => {
   const allTasks = useSelector(selectTask);
   const dispatch = useDispatch<AppDispatch>();
   const isLoading = useSelector(selectIsLoading);
@@ -27,6 +28,9 @@ export const Home: FC = () => {
 
   return (
     <Container>
+      <Helmet>
+        <title>Your tasks</title>
+      </Helmet>
       <DrawlerBtn style={{ padding: '40px' }}>
         <TemporaryDrawer />
       </DrawlerBtn>
@@ -58,3 +62,4 @@ export const Home: FC = () => {
     </Container>
   );
 };
+export default Tasks;

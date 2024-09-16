@@ -1,8 +1,8 @@
 import { useDispatch } from 'react-redux';
-import { updateTask } from '../../../../../redux/operators';
+import { updateTask } from '../../../../../redux/tasks/operators';
 import { ModalButton, TextInput } from './editModalStyled';
 import { FC, useState } from 'react';
-import { IeditTaskModal } from '../../../Task.types';
+import { IeditTaskModal } from '../../../../../helper/Task.types';
 import { AppDispatch } from '../../../../../redux/store';
 
 export const EditTaskModal: FC<IeditTaskModal> = ({

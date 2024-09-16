@@ -1,10 +1,10 @@
 import { useDispatch } from 'react-redux';
 
-import { deleteTask, fetchTasks } from '../../../../../redux/operators';
+import { deleteTask, fetchTasks } from '../../../../../redux/tasks/operators';
 
 import { ModalButton } from './modalStyledWindow';
 import { FC } from 'react';
-import { IdeleteTaskModal } from '../../../Task.types';
+import { IdeleteTaskModal } from '../../../../../helper/Task.types';
 import { AppDispatch } from '../../../../../redux/store';
 
 export const DeleteConfirmationModal: FC<IdeleteTaskModal> = ({

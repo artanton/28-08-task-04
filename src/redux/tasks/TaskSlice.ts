@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { fetchTasks, deleteTask, addTask, updateTask } from './operators';
-import { IState, ITask } from '../Pages/mainPage/Task.types';
+import { IState, ITask } from '../../helper/Task.types';
 // import { RootState } from './store';
 
 const initialState: IState = {
