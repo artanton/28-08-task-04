@@ -10,6 +10,8 @@ import {
 import { useDispatch } from 'react-redux';
 
 import { register } from '../../../redux/auth/operators';
+import { useNavigate } from 'react-router-dom';
+
 
 const userSchema = Yup.object().shape({
   name: Yup.string()
@@ -31,17 +33,26 @@ const userSchema = Yup.object().shape({
 
 export const RegisterForm = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const handleSubmit = (values, actions) => {
-    dispatch(
+  const handleSubmit = async (values, actions) => {
+    try {
+      
+    
+   await dispatch(
       register({
         name: values.name,
         email:values.email.toLowerCase(),
         password: values.password,
       })
-    );
+    ).unwrap();
+    navigate(`/login`)
+  } catch (error) {
+    console.log(error.response?.data?.message);
+      
+  }finally
 
-    actions.resetForm();
+   { actions.resetForm();}
   };
 
   return (

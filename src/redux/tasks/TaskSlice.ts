@@ -34,8 +34,6 @@ const taskSlice = createSlice({
       .addCase(
         fetchTasks.rejected,
         (state: IState, action: PayloadAction<unknown>) => {
-          // console.log(typeof( action.payload));
-          // console.log(action.payload);
           state.isLoading = false;
           state.error = action.payload as string;
         }

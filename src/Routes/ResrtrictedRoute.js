@@ -6,7 +6,7 @@ import { useAuth } from '../Hooks/useAuth';
 
 export const RestrictedRoute = ({ component: Component, redirectTo = '/' }) => {
   const { isLoggedIn, user } = useAuth();
-  console.log(user.verify);
+ 
   if(isLoggedIn &&!user.verify){
     return Component}
 
