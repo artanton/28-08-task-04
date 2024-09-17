@@ -1,6 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { ITask } from '../Pages/mainPage/Task.types';
+import { ITask } from '../../helper/Task.types';
+
+
+axios.defaults.baseURL = process.env.REACT_APP_API_URL;
+
 
 // axios.defaults.baseURL = 'https://668c2ba00b61b8d23b0ca4de.mockapi.io';
 // axios.defaults.baseURL = 'https://recursive-todo-api.onrender.com/api'; //node-mongoDB
@@ -8,7 +12,7 @@ import { ITask } from '../Pages/mainPage/Task.types';
 
 
 // axios.defaults.baseURL = 'https://recurcieve-todolist-nest-typeorm-api.onrender.com'; //nest-typeORM-mongoDB
-axios.defaults.baseURL = 'https://recurcieve-todo-nest-prisma-mongo.onrender.com'; //nest-prisma-mongoDB
+// axios.defaults.baseURL = 'https://recurcieve-todo-nest-prisma-mongo.onrender.com'; //nest-prisma-mongoDB
 
 export const fetchTasks = createAsyncThunk<ITask[]>(
   'tasks/fetchAll',
@@ -32,13 +36,7 @@ export const addTask = createAsyncThunk<
   Partial<ITask>,
   { rejectValue: string }
 >('tasks/addTask', async ({ text, date, parentId, subLevel }, thunkAPI) => {
-  console.log(
-    "text", typeof(text), text,
-    "date", typeof(date), date, 
-    "parentId", typeof(parentId), parentId,
-    "subLevel", typeof(subLevel), subLevel
-  );
-  try {
+    try {
     const response = await axios.post('/tasks', {
       text,
       date,

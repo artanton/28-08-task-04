@@ -6,10 +6,15 @@ import { FC } from 'react';
 
 import { MagnifyingGlass } from 'react-loader-spinner';
 import { Container, Loader } from './AppLayoutStyled';
+import { AppBar } from './components/AppBar/AppBar';
+import { HelmetProvider } from 'react-helmet-async';
+
 
 export const AppLayout: FC = () => {
   return (
+    <HelmetProvider>
     <Container>
+      <AppBar/>
       <main>
         <Suspense
           fallback={
@@ -33,5 +38,6 @@ export const AppLayout: FC = () => {
 
       <GlobalStyle />
     </Container>
+    </HelmetProvider>
   );
 };

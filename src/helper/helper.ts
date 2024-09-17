@@ -1,4 +1,4 @@
-import type { ITask } from "../Pages/mainPage/Task.types";
+import type { ITask } from "./Task.types";
 
 //  parentId grouping func
 export const groupTasksByParentId = (tasks:ITask[]):Record<string, ITask[]> => {

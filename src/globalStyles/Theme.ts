@@ -12,6 +12,7 @@ export const theme = {
   },
 
   padding: {
+    huge:'40px',
     big: '20px',
     norm: '8px',
     small: '4px',
