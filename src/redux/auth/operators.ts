@@ -4,7 +4,7 @@ import { RootState } from '../store';
 import { IAuthState, IUser } from './AuthSlice';
 
 // axios.defaults.baseURL = process.env.REACT_APP_API_URL;
-axios.defaults.baseURL = 'https://recursive-todo-api-1.onrender.com';
+axios.defaults.baseURL = 'https://recursive-todo-api-1.onrender.com/api';
 
 
 interface ILoginRes extends Pick<IAuthState, 'user' | 'token'> {}
