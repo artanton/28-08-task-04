@@ -6,7 +6,7 @@ import { PrivateRoute } from './Routes/PrivatRoute';
 import { RestrictedRoute } from './Routes/ResrtrictedRoute';
 import { refreshUser } from './redux/auth/operators';
 import { useAuth } from './Hooks/useAuth';
-import NotFoundPage from './Pages/NotFoundPage/NotFoundPage';
+// import NotFoundPage from './Pages/NotFoundPage/NotFoundPage';
 
 import { MagnifyingGlass } from 'react-loader-spinner';
 import { Loader } from './AppLayoutStyled';
@@ -15,7 +15,7 @@ const HomePage = lazy(() => import('./Pages/Home/HomePage'));
 const RegisterPage = lazy(() => import('./Pages/Register/RegisterPage'));
 const LoginPage = lazy(()=> import('./Pages/Login/LoginPage'));
 const TaskPage = lazy(()=> import ('./Pages/mainPage/TaskPage'));
-
+const NotFoundPage = lazy (()=>import('./Pages/NotFoundPage/NotFoundPage'));
 export const App = () => {
   const dispatch =useDispatch();
   const { isRefreshing } = useAuth();
