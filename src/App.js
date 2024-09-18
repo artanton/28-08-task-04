@@ -15,7 +15,8 @@ const HomePage = lazy(() => import('./Pages/Home/HomePage'));
 const RegisterPage = lazy(() => import('./Pages/Register/RegisterPage'));
 const LoginPage = lazy(()=> import('./Pages/Login/LoginPage'));
 const TaskPage = lazy(()=> import ('./Pages/mainPage/TaskPage'));
-const NotFoundPage = lazy (()=>import('./Pages/NotFoundPage/NotFoundPage'));
+const NotFoundPage = lazy (()=>import('./Pages/notFoundPage/NotFoundPage'));
+
 export const App = () => {
   const dispatch =useDispatch();
   const { isRefreshing } = useAuth();
@@ -51,7 +52,7 @@ useEffect(()=>{
         />
 
         <Route
-          path="/login"
+          path='/login'
           element={
             <RestrictedRoute redirectTo="/tasks" component={<LoginPage />} />
           }
@@ -63,7 +64,9 @@ useEffect(()=>{
           <PrivateRoute redirectTo='/login' component={<TaskPage/>}/>
         } />
 
-        <Route path="*" element={<NotFoundPage />} />
+        <Route 
+        path='*' 
+        element={<NotFoundPage />} />
       </Route>
     </Routes>
   );
