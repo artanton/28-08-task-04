@@ -6,7 +6,6 @@ import { IAuthState, IUser } from './AuthSlice';
 // axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 axios.defaults.baseURL = 'https://recursive-todo-api-1.onrender.com/api';
 
-
 interface ILoginRes extends Pick<IAuthState, 'user' | 'token'> {}
 
 interface IRegData extends Pick<IUser, 'name' | 'email'> {
@@ -96,10 +95,28 @@ export const refreshUser = createAsyncThunk<
     }
   }
 });
+// <string, void, {rejectValue: string}>
+// <{ message: string }>
 
-// export const resendVerify = createAsyncThunk (
-//   "auth/verify",
-//   async (creds, thunkApi)=>{
+export const resendVerify = createAsyncThunk(
+  'auth/verify',
+  async (_, thunkApi) => {
+    const state = thunkApi.getState() as RootState;
+    const email = state.auth.user?.email;
+    
 
-//   }
-// )
+    if (!email) {
+      return thunkApi.rejectWithValue('Unable to find user');
+    }
+    try {
+      const responce =  await axios.post('/users/verify', {email});
+      return responce?.data?.message;
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        const errorMessage =
+          error.response?.data?.message || 'Unable to find user';
+        return thunkApi.rejectWithValue(errorMessage);
+      }
+    }
+  }
+);
