@@ -36,8 +36,7 @@ export const RegisterForm = () => {
   const navigate = useNavigate();
 
   const handleSubmit = async (values, actions) => {
-    try {
-      
+    try {      
     
    await dispatch(
       register({
