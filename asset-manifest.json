@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.js": "/28-08-task-04/static/js/main.a21b096d.js",
+    "main.js": "/28-08-task-04/static/js/main.64114ff8.js",
     "static/js/255.8598d66b.chunk.js": "/28-08-task-04/static/js/255.8598d66b.chunk.js",
-    "static/js/838.66714aae.chunk.js": "/28-08-task-04/static/js/838.66714aae.chunk.js",
-    "static/js/715.04583607.chunk.js": "/28-08-task-04/static/js/715.04583607.chunk.js",
+    "static/js/838.df1ee19e.chunk.js": "/28-08-task-04/static/js/838.df1ee19e.chunk.js",
+    "static/js/715.9632872d.chunk.js": "/28-08-task-04/static/js/715.9632872d.chunk.js",
     "static/js/401.f8d81892.chunk.js": "/28-08-task-04/static/js/401.f8d81892.chunk.js",
     "static/js/583.02495fd1.chunk.js": "/28-08-task-04/static/js/583.02495fd1.chunk.js",
     "static/js/306.3ca91b05.chunk.js": "/28-08-task-04/static/js/306.3ca91b05.chunk.js",
     "static/js/488.958c9248.chunk.js": "/28-08-task-04/static/js/488.958c9248.chunk.js",
     "index.html": "/28-08-task-04/index.html",
-    "main.a21b096d.js.map": "/28-08-task-04/static/js/main.a21b096d.js.map",
+    "main.64114ff8.js.map": "/28-08-task-04/static/js/main.64114ff8.js.map",
     "255.8598d66b.chunk.js.map": "/28-08-task-04/static/js/255.8598d66b.chunk.js.map",
-    "838.66714aae.chunk.js.map": "/28-08-task-04/static/js/838.66714aae.chunk.js.map",
-    "715.04583607.chunk.js.map": "/28-08-task-04/static/js/715.04583607.chunk.js.map",
+    "838.df1ee19e.chunk.js.map": "/28-08-task-04/static/js/838.df1ee19e.chunk.js.map",
+    "715.9632872d.chunk.js.map": "/28-08-task-04/static/js/715.9632872d.chunk.js.map",
     "401.f8d81892.chunk.js.map": "/28-08-task-04/static/js/401.f8d81892.chunk.js.map",
     "583.02495fd1.chunk.js.map": "/28-08-task-04/static/js/583.02495fd1.chunk.js.map",
     "306.3ca91b05.chunk.js.map": "/28-08-task-04/static/js/306.3ca91b05.chunk.js.map",
     "488.958c9248.chunk.js.map": "/28-08-task-04/static/js/488.958c9248.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.a21b096d.js"
+    "static/js/main.64114ff8.js"
   ]
 }
