@@ -25,7 +25,7 @@ export const TextInput = styled.textarea`
   background-color: #fff;
   padding: 10px;
   border-radius: 8px;
-  width: 400px;
+  width: 300px;
   margin:  20px 0 ;
  
 `;

@@ -31,7 +31,7 @@ import { Helmet } from 'react-helmet-async';
       <Helmet>
         <title>Your tasks</title>
       </Helmet>
-      <DrawlerBtn style={{ padding: '40px' }}>
+      <DrawlerBtn style={{ zIndex: 0, padding: '40px' }}>
         <TemporaryDrawer />
       </DrawlerBtn>
 

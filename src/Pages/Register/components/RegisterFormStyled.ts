@@ -14,30 +14,45 @@ export const FormStyled = styled(Form)`
 `;
 
 export const FieldGroup = styled.label`
-
   display: flex;
   font-family: Roboto, sans-serif;
+  font-size: 14px;
   flex-direction: column;
   gap: ${p => p.theme.gap.small};
+  position: relative;
 `;
 
 export const ErrorMessageStyled = styled(ErrorMessage)`
   padding: 0;
   color: red;
-  font-size: 12px; 
+  font-size: 12px;
+  position: absolute;
+  left: 10px;
+  top: 105%;
 `;
 export const FieldStyled = styled(Field)`
   min-width: 200px;
-  padding:${p => p.theme.padding.small}; 
+  padding: ${p => p.theme.padding.small};
   font-size: 0.875rem;
   border: 1px solid ${p => p.theme.colors.borderGray};
   border-radius: ${p => p.theme.borderRad.small};
   box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.2);
 `;
 
+export const IconButton = styled.button`
+  display: flex;
+  position: absolute;
+  right: 4px;
+  top: 55%;
+  border: none;
+  background-color: transparent;
+  align-items: center;
+  color: rgb(25, 118, 210);
+`;
+
 export const Button = styled.button`
   display: inline-flex;
-
+  margin-top: 12px;
   align-items: center;
 
   justify-content: center;

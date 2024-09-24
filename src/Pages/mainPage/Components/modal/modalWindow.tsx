@@ -27,8 +27,8 @@ export const Modal:FC<IgeneralModal> = ({ isOpen, onClose, children }) => {
   if (!isOpen) return null;
 
   return (
-    <ModalOverlay onClick={closeModalOnBackdrop}>
-      <ModalContent>
+    <ModalOverlay  style={{ zIndex: 10 }} onClick={closeModalOnBackdrop}>
+      <ModalContent style={{ zIndex: 10 }}>
         <CloseButton onClick={onClose}>
           <MdClose style={{ color: 'red' }} />
         </CloseButton>

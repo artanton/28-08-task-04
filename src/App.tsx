@@ -5,6 +5,7 @@ import { AppLayout } from './AppLauout';
 import { PrivateRoute } from './Routes/PrivatRoute';
 import { RestrictedRoute } from './Routes/ResrtrictedRoute';
 import { refreshUser } from './redux/auth/operators';
+import { AppDispatch } from './redux/store'
 import { useAuth } from './Hooks/useAuth';
 // import NotFoundPage from './Pages/NotFoundPage/NotFoundPage';
 
@@ -18,7 +19,7 @@ const TaskPage = lazy(()=> import ('./Pages/mainPage/TaskPage'));
 const NotFoundPage = lazy (()=>import('./Pages/notFoundPage/NotFoundPage'));
 
 export const App = () => {
-  const dispatch =useDispatch();
+  const dispatch =useDispatch<AppDispatch>();
   const { isRefreshing } = useAuth();
 
 useEffect(()=>{
@@ -47,21 +48,21 @@ useEffect(()=>{
         <Route
           path="/register"
           element={
-            <RestrictedRoute redirectTo="/tasks" component={<RegisterPage />} />
+            <RestrictedRoute redirectTo="/tasks" component={RegisterPage} />
           }
         />
 
         <Route
           path='/login'
           element={
-            <RestrictedRoute redirectTo="/tasks" component={<LoginPage />} />
+            <RestrictedRoute redirectTo="/tasks" component={LoginPage } />
           }
         />
 
         <Route
         path='/tasks'
         element={
-          <PrivateRoute redirectTo='/login' component={<TaskPage/>}/>
+          <PrivateRoute redirectTo='/login' component={TaskPage}/>
         } />
 
         <Route 
