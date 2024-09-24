@@ -6,11 +6,14 @@ import {
   FieldGroup,
   FieldStyled,
   FormStyled,
+  IconButton
 } from '../../Register/components/RegisterFormStyled';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../../redux/store';
 
 import { login } from '../../../redux/auth/operators';
+import { useState } from 'react';
+import { IoEye, IoEyeOffOutline } from 'react-icons/io5';
 
 const userSchema = Yup.object().shape({
   email: Yup.string()
@@ -24,6 +27,11 @@ const userSchema = Yup.object().shape({
 
 export const LoginForm = () => {
   const dispatch = useDispatch<AppDispatch>();
+  const [showPassword, setShowPassword] = useState(false);
+
+  const swapPassword = () => {
+    setShowPassword(!showPassword);
+  };
 
   interface LogValues {
     email: string;
@@ -62,9 +70,13 @@ export const LoginForm = () => {
 
         <FieldGroup>
           Password
-          <FieldStyled name="password" type="string" placeholder="123456" />
+          <FieldStyled name="password" type={showPassword ? 'text' : 'password'} placeholder="123456" />
+          <IconButton type="button" onClick={swapPassword}>
+            {showPassword ? <IoEye /> : <IoEyeOffOutline />}
+          </IconButton>
           <ErrorMessageStyled name="password" component="span" />
         </FieldGroup>
+
 
         <Button type="submit">Sign In </Button>
       </FormStyled>
