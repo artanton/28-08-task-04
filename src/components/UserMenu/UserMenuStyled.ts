@@ -19,14 +19,21 @@ export const LogOutButton = styled(NavLink)`
 
   &:hover {
     color: rgb(25, 118, 210);
+    
   }
 `;
 
 export const UserAvatar = styled.img`
-  width: 32px;
-  height: 32px;
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
   object-fit: cover;
+  cursor: pointer;  
+  &:hover {
+    
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 5px 5px -3px,
+      rgba(0, 0, 0, 0.22) 0px 8px 10px 1px, rgba(0, 0, 0, 0.2) 0px 3px 14px 2px;
+  }
 `;
 export const Name = styled.span`
   display: flex;

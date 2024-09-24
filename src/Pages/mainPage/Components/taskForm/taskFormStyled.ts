@@ -28,7 +28,7 @@ export const ErrorMessageStyled = styled(ErrorMessage)`
   font-size: 12px;
 `;
 export const FieldStyled = styled(Field)`
-  width: "70vw";
+  min-width: 300px;
  
   border: 1px solid ${p => p.theme.colors.borderGray};
   border-radius: ${p => p.theme.borderRad.small};

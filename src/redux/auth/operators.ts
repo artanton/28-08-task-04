@@ -1,10 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { RootState } from '../store';
-import { IAuthState, IUser } from './AuthSlice';
+import { IAuthState, IUser } from '../../helper/Auth.types';
 
-// axios.defaults.baseURL = process.env.REACT_APP_API_URL;
-axios.defaults.baseURL = 'https://recursive-todo-api-1.onrender.com/api';
+axios.defaults.baseURL = `${process.env.REACT_APP_API_URL}/api`
+axios.defaults.baseURL = 'https://recursive-todo-api-1.onrender.com/api'
 
 interface ILoginRes extends Pick<IAuthState, 'user' | 'token'> {}
 
@@ -13,6 +13,12 @@ interface IRegData extends Pick<IUser, 'name' | 'email'> {
 }
 
 interface ILoginData extends Pick<IRegData, 'password' | 'email'> {}
+
+interface IPasswordSet{
+  oldPassword: string;
+  newPassword?:string;
+  avatarURL?:string;
+}
 
 const setAuthHeader = (token: string) => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -98,7 +104,7 @@ export const refreshUser = createAsyncThunk<
 // <string, void, {rejectValue: string}>
 // <{ message: string }>
 
-export const resendVerify = createAsyncThunk(
+export const resendVerify = createAsyncThunk<string, void, {rejectValue: string}>(
   'auth/verify',
   async (_, thunkApi) => {
     const state = thunkApi.getState() as RootState;
@@ -116,6 +122,42 @@ export const resendVerify = createAsyncThunk(
         const errorMessage =
           error.response?.data?.message || 'Unable to find user';
         return thunkApi.rejectWithValue(errorMessage);
+      }
+    }
+  }
+);
+
+export const updatePassword = createAsyncThunk<string, IPasswordSet, {rejectValue: string}>(
+  'auth/update',
+  async (newData:IPasswordSet, thunkAPI) => {
+    try {
+       const responce = await axios.patch('/users/update', newData)
+      return responce.data.message;
+    } catch (error) {
+      if (axios.isAxiosError(error)){
+        const errorMessage = 
+        error.response?.data?.message || "Something went wrong";
+        return thunkAPI.rejectWithValue(errorMessage);
+      }
+    }
+  }
+);
+
+export const updateAvatar = createAsyncThunk<string, FormData, {rejectValue: string}>(
+  'auth/avatar',
+  async (formData, thunkAPI) => {
+    try {
+       const responce = await axios.patch('/users/avatar', formData,  {
+        headers: {
+          'Content-Type': 'multipart/form-data', // Указываем, что отправляем FormData
+        },
+      })
+      return responce.data;
+    } catch (error) {
+      if (axios.isAxiosError(error)){
+        const errorMessage = 
+        error.response?.data?.message || "Something went wrong";
+        return thunkAPI.rejectWithValue(errorMessage);
       }
     }
   }

@@ -3,11 +3,12 @@ import axios from 'axios';
 import { ITask } from '../../helper/Task.types';
 
 
-// axios.defaults.baseURL = process.env.REACT_APP_API_URL;
+// axios.defaults.baseURL = `${process.env.REACT_APP_API_URL}/api`
+axios.defaults.baseURL = 'https://recursive-todo-api-1.onrender.com/api'
 
 
 // axios.defaults.baseURL = 'https://668c2ba00b61b8d23b0ca4de.mockapi.io';
-axios.defaults.baseURL = 'https://recursive-todo-api-1.onrender.com/api'; //node-mongoDB
+// axios.defaults.baseURL = 'https://recursive-todo-api-1.onrender.com/api'; //node-mongoDB
 // axios.defaults.baseURL = 'https://recusive-todolist-nest-mongo.onrender.com'; //nest-mongose-mongoDB
 
 

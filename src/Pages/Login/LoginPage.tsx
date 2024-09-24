@@ -6,10 +6,11 @@ import {useSelector, useDispatch} from 'react-redux';
 import { selectErrorMessage } from '../../redux/auth/selectors';
 import { resendVerify } from '../../redux/auth/operators';
 import { Button } from '../Register/RegisterPageStyled';
+import { AppDispatch } from '../../redux/store';
 
 export default function Login() {
   const errorMessage = useSelector(selectErrorMessage)
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 const onSubmit=()=>dispatch(resendVerify());
   return (
     <>

@@ -1,4 +1,4 @@
-import { Formik } from 'formik';
+import { Formik, FormikHelpers } from 'formik';
 import * as Yup from 'yup';
 import {
   Button,
@@ -8,6 +8,7 @@ import {
   FormStyled,
 } from '../../Register/components/RegisterFormStyled';
 import { useDispatch } from 'react-redux';
+import { AppDispatch } from '../../../redux/store';
 
 import { login } from '../../../redux/auth/operators';
 
@@ -22,9 +23,17 @@ const userSchema = Yup.object().shape({
 });
 
 export const LoginForm = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
-  const handleSubmit = (values, actions) => {
+  interface LogValues {
+    email: string;
+    password: string;
+  }
+
+  const handleSubmit = (
+    values: {email: string, password: string},
+    actions: FormikHelpers<LogValues>
+  ) => {
     dispatch(
       login({
         email:values.email.toLowerCase(),
