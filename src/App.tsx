@@ -1,16 +1,17 @@
-import { lazy, useEffect } from 'react';
+import { lazy, useEffect} from 'react';
 import {useDispatch} from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 import { AppLayout } from './AppLauout';
 import { PrivateRoute } from './Routes/PrivatRoute';
 import { RestrictedRoute } from './Routes/ResrtrictedRoute';
-import { refreshUser } from './redux/auth/operators';
-import { AppDispatch } from './redux/store'
+import { refreshUser} from './redux/auth/operators';
+import { AppDispatch} from './redux/store'
 import { useAuth } from './Hooks/useAuth';
 // import NotFoundPage from './Pages/NotFoundPage/NotFoundPage';
 
 import { MagnifyingGlass } from 'react-loader-spinner';
 import { Loader } from './AppLayoutStyled';
+// import { setupAxiosInterceptors } from './helper/axiosInterceptr';
 
 const HomePage = lazy(() => import('./Pages/Home/HomePage'));
 const RegisterPage = lazy(() => import('./Pages/Register/RegisterPage'));
@@ -21,10 +22,29 @@ const NotFoundPage = lazy (()=>import('./Pages/notFoundPage/NotFoundPage'));
 export const App = () => {
   const dispatch =useDispatch<AppDispatch>();
   const { isRefreshing } = useAuth();
+  // const { user } = useAuth();
+  // const [state] = useState(0);
+  // const [hasMounted, setHasMounted] = useState(false);
+  
 
 useEffect(()=>{
   dispatch(refreshUser());
+
+  
+  
 },[dispatch])
+
+
+// useEffect(() => {
+//   if (hasMounted) {
+//     setupAxiosInterceptors(store);
+//   } else {
+//     setHasMounted(true);
+//   }
+// }, [state, hasMounted]);
+
+
+
 
 
 
