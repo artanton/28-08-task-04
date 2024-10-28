@@ -3,7 +3,7 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 import { RootState } from '../store';
 import { IAuthState, IUser } from '../../helper/Auth.types';
-import { store } from '../store';
+
 // import { setupAxiosInterceptors } from '../../helper/axiosInterceptr';
 
 axios.defaults.baseURL = `${process.env.REACT_APP_API_URL}/api`;

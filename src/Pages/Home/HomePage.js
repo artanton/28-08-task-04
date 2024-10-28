@@ -1,7 +1,7 @@
 import { useAuth } from "../../Hooks";
-import { regenerateTokens } from "../../redux/auth/operators";
+// import { regenerateTokens } from "../../redux/auth/operators";
 import { Greating, HomePageContainer } from "./HomePageStyled";
-import {useDispatch} from 'react-redux';
+// import {useDispatch} from 'react-redux';
 
   
   export default function Home() {

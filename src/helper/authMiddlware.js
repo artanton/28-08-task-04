@@ -1,6 +1,6 @@
 // import { Middleware } from '@reduxjs/toolkit';
 // import axios from 'axios';
-import { refreshUser, regenerateTokens } from '../redux/auth/operators';
+// import { refreshUser, regenerateTokens } from '../redux/auth/operators';
 
 const authMiddleware =
   ({ dispatch, getState }) =>
