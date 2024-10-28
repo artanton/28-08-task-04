@@ -7,7 +7,7 @@ export interface IUser {
   
   export interface IAuthState {
     user: IUser;
-    token: string | null;
+    accessToken: string | null;
     isLoggedIn: boolean;
     isRefreshing: boolean;
     authError: string | null;

@@ -3,6 +3,7 @@ import {
   login,
   logout,
   refreshUser,
+  regenerateTokens,
   register,
   resendVerify,
   updateAvatar,
@@ -19,7 +20,8 @@ export const initialState: IAuthState = {
     avatarURL: null,
     verify: false,
   },
-  token: null,
+  
+  accessToken: null,
   isLoggedIn: false,
   isRefreshing: false,
   authError: null,
@@ -37,6 +39,7 @@ const authSlice = createSlice({
     })
       .addCase(register.fulfilled, (state, action) => {
         state.isRefreshing = false;
+        state.authError = null;
         state.user.email = action.payload.email;
         state.user.name = action.payload.name;
         Notify.success(
@@ -51,13 +54,15 @@ const authSlice = createSlice({
       })
       .addCase(login.pending, (state, action) => {
         state.isLoading = true;
+        state.authError = null;
       })
 
       .addCase(login.fulfilled, (state, action) => {
         state.isRefreshing = false;
         state.user = action.payload.user;
-        state.token = action.payload.token;
+        state.accessToken = action.payload.accessToken;
         state.isLoggedIn = true;
+        state.authError = null;
       })
       .addCase(login.rejected, (state, action) => {
         state.isRefreshing = false;
@@ -77,11 +82,10 @@ const authSlice = createSlice({
           avatarURL: null,
           verify: false,
         };
-        state.token = null;
+        state.accessToken = null;
         state.isLoggedIn = false;
       })
       .addCase(refreshUser.pending, state => {
-        state.isRefreshing = false;
         state.isRefreshing = true;
         state.user.email= null;
         state.authError = null;
@@ -90,9 +94,31 @@ const authSlice = createSlice({
         state.user = action.payload;
         state.isLoggedIn = true;
         state.isRefreshing = false;
+        state.authError = null;
       })
       .addCase(refreshUser.rejected, (state, action) => {
         state.isRefreshing = false;
+        state.authError = action.payload as string;
+        if (state.isLoggedIn)
+          Notify.failure((action.payload as string) || 'Unable to find user');
+        // state.isLoggedIn = false;
+      })
+      .addCase(regenerateTokens.pending, state => {
+        state.isRefreshing = true;
+        state.authError = null;
+        state.isLoggedIn = false;
+      })
+      .addCase(regenerateTokens.fulfilled, (state, action:any) => {
+        state.user = action.payload.user;
+        state.isLoggedIn = true;
+        state.isRefreshing = false;
+        state.accessToken = action.payload.accessToken;
+      })
+      .addCase(regenerateTokens.rejected, (state, action) => {
+        state.isRefreshing = false;
+        state.user= initialState.user;
+        state.isLoggedIn = false;
+        state.accessToken = null;
         if (state.isLoggedIn)
           Notify.failure((action.payload as string) || 'Unable to find user');
       })
@@ -109,14 +135,16 @@ const authSlice = createSlice({
         Notify.failure((action.payload as string) || 'Something went wrong');
       })
       .addCase(updatePassword.fulfilled, (state, action) => {
+        state.authError = null;
         Notify.success(action.payload as string);
       })
       .addCase(updatePassword.rejected, (state, action) => {
         state.authError = action.payload as string;
         Notify.failure((action.payload as string) || 'Something went wrong');  
       })
-      .addCase(updateAvatar.fulfilled, (state, action) => {       
-        state.user.avatarURL = action.payload as string 
+      .addCase(updateAvatar.fulfilled, (state, action) => { 
+        state.authError = null;
+        state.user.avatarURL = action.payload 
         Notify.success("New photo upload success");
       })
       .addCase(updateAvatar.rejected, (state, action) => {
@@ -128,3 +156,6 @@ const authSlice = createSlice({
 });
 
 export const authReducer = authSlice.reducer;
+
+
+

@@ -8,13 +8,14 @@ import { UserSettings } from './component/userSettings/userSettings';
 import { AppDispatch } from '../../redux/store';
 import { IUser } from '../../helper/Auth.types';
 
-// const baseURL = process.env.REACT_APP_API_URL;
-const baseURL = 'https://recursive-todo-api-1.onrender.com'
+
+const baseURL = `${process.env.REACT_APP_API_URL}`
+// const baseURL = 'https://recursive-todo-api-1.onrender.com'
 
 export const UserMenu: FC = () => {
   const dispatch = useDispatch<AppDispatch>();
   const { user } = useAuth()as { user: IUser };
-
+  // console.log(store.getState());
   const [showModal, setShowModal] = useState(false);
   //   const [modalContent, setModalContent] = useState<React.ReactNode | null>(null);
 
@@ -24,6 +25,7 @@ export const UserMenu: FC = () => {
     const openModal = () => {
       setShowModal(true);
     };
+    
     const isDefaultAvatar = user.avatarURL?user.avatarURL.split('/').includes('gravatar.com'):false;
     
     
